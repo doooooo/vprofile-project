@@ -1,0 +1,22 @@
+services:
+  # web:
+  #   build: Docker-files/web/.
+  #   ports:
+  #     - "80:80"
+  # db:
+  #   build: Docker-files/db/.
+  #   # ports:
+  #   #   - "3306:3306"
+  app:
+    # build: Docker-files/app/.
+    build: .
+    ports:
+      - "8090:8080"
+  rabbitmq:
+    image: "rabbitmq:3.13"
+    environment:
+      - RABBITMQ_DEFAULT_VHOST=vpromq01
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+  memcached:
+    image: "memcached:1.6"
